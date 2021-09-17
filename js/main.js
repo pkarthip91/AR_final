@@ -105,6 +105,7 @@ $(document).on("click", function () {
 });
 
 
+// Modelview Image animation based on devices
 const modelViewerImage = document.querySelector("model-viewer#imgSize");
 var animationListValues = "pos45";
 var ios = false;
@@ -132,6 +133,7 @@ function sedanAnimation() {
     }
 }
 
+// hatchback animation
 function hatchback() {
     animationListValues = "pos45"
     if (ios == true) {
@@ -140,6 +142,7 @@ function hatchback() {
     }
 }
 
+// estateAnimation animation
 function estateAnimation() {
     animationListValues = "pos50"
     if (ios == true) {
@@ -148,6 +151,7 @@ function estateAnimation() {
     }
 }
 
+// fullSuvAnimation animation
 function fullSuvAnimation() {
     animationListValues = "pos65"
     if (ios == true) {
@@ -156,34 +160,21 @@ function fullSuvAnimation() {
     }
 }
 
+// midSizeSuvAnimation animation
 function midSizeSuvAnimation() {
     animationListValues = "pos60"
     if (ios == true) {
         animationListValues = "pos60"
         modelViewerImage.animationName = animationListValues
-        // modelViewerImage.setAttribute("camera-orbit", "0deg 0deg 3m")
     }
 }
-
+// Without car animation
 function withoutcarAnimation() {
     animationListValues = "pos1"
     if (ios == true) {
         modelViewerImage.animationName = animationListValues
     }
 }
-
-
-
-
-// window.onload = () => {
-//     alert(modelViewerImage.animationName)
-// };
-
-// // Lock Button animation 
-// function lockBtn() {
-
-//    // alert(modelViewerImage.animationName)
-// }
 
 // Animation List 
 var animationList =
@@ -201,13 +192,11 @@ var animationList =
         "pos95",
         "pos100",
     ]
-// var index = 0;
-// var item = animationList[index];
-var previous = document.getElementById('previousAnimationn');
-var next = document.getElementById('nextAnimation');
+var downArrow = document.getElementById('previousAnimationn');
+var upArrow = document.getElementById('nextAnimation');
 
 // Click Next Animation Item 
-next.addEventListener('click', function () {
+upArrow.addEventListener('click', function () {
     if (next.disabled == false) {
         displayItem(modelViewer.animationName = animationList[animationList.indexOf(animationListValues) + 1]);
         console.log(modelViewer.animationName)
@@ -216,8 +205,8 @@ next.addEventListener('click', function () {
     }
 });
 // Click previous Animation Item
-previous.addEventListener('click', function () {
-    if (previous.disabled == false) {
+downArrow.addEventListener('click', function () {
+    if (downArrow.disabled == false) {
         displayItem(modelViewer.animationName = animationList[animationList.indexOf(animationListValues) - 1]);
         console.log(modelViewer.animationName)
         animationListValues = animationList[animationList.indexOf(animationListValues) - 1];
@@ -227,11 +216,10 @@ previous.addEventListener('click', function () {
 // Disbled last Previous Item
 function displayItem() {
     if (ios == false) {
-        previous.disabled = animationList.indexOf(animationListValues) <= 1;
+        downArrow.disabled = animationList.indexOf(animationListValues) <= 1;
     }
-    next.disabled = animationList.indexOf(animationListValues) >= animationList.length - 1;
+    downArrow.disabled = animationList.indexOf(animationListValues) >= animationList.length - 1;
 }
-
 // Proceed Button detect
 $("#ar-button").click(function () {
     if (ios == false) {
@@ -245,7 +233,6 @@ $("#ar-button").click(function () {
     }
     displayItem();
     // Call animation up and down 
-
     // When click proceed button show loading
     document.getElementsByClassName("loader-new")[0].style.display = "block";;
     document.getElementById("overlayer").style.display = "block";
@@ -260,29 +247,15 @@ $("#ar-button").click(function () {
 document.querySelector("#imgSize").addEventListener('ar-status', (event) => {
     if (event.detail.status === 'session-started') {
         modelViewerImage.animationName = "None"
-        //alert(modelViewerImage.animationName)
     }
-
-    // AR Status updated the not-presenting change the Model
-
-    // if(event.detail.status === 'not-presenting'){
-    //     // document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1.glb");
-    //     modelViewerImage.animationName = "pos0"
-    //     alert(modelViewerImage.animationName)
-    //  }
-
     // AR Status updated the object placed change the model
     if (event.detail.status === 'object-placed') {
-        //document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1.glb");
         modelViewerImage.animationName = animationListValues
-        // alert(modelViewerImage.animationName)
     }
 });
 
 const modelViewer = document.getElementById("imgSize");
 var animationName = modelViewer.animationName;
-
-
 // Change GLB
 const modelChangeGlb = document.querySelector("model-viewer#imgSize");
 function sizeAlpine() {
@@ -290,51 +263,18 @@ function sizeAlpine() {
     console.log(modelChangeGlb.src)
 }
 
-// function sizeXXL() {
-//     modelChangeGlb.src = "img/glb/613500_Thule_Vector_Alpine_hp_V1.glb";
-//     console.log(modelChangeGlb.src)
-// }
-
-// function sizeM() {
-//     modelChangeGlb.src = "img/glb/613500_Thule_Vector_Alpine_hp_V1.glb";
-//     console.log(modelChangeGlb.src)
-// }
-
-// function sizeXL() {
-//     modelChangeGlb.src = "img/glb/629800_Thule_Motion-XT_XL_Low-V1.glb";
-// }
-
-// function sizeSportsXXL() {
-//     modelViewer.src = "img/glb/629800_Thule_Motion-XT_XL_Low-V1.glb";
-// }
-// function sizeSportL() {
-//     modelViewer.src = "img/glb/629800_Thule_Motion-XT_XL_Low-V1.glb";
-// }
-
-// function alpineXXL() {
-//     modelChangeGlb.src = "img/glb/613500_Thule_Vector_Alpine_hp_V1.glb";
-// }
-
-// function onCarGlb() {
-//     modelViewer.src = "img/glb/629500_Thule_Motion_XT_Alpine_Low_v20.glb";
-// }
-// function onTableGlb() {
-//     modelViewer.src = "img/glb/629500_Thule_Motion_XT_Alpine_Low_v20.glb";
-// }
-
 // Scale fixed and lock & unlock 
 function dyanmicChangeAttr() {
     var arScale = document.querySelector("#imgSize");
     if ($('#imgSize').attr('ar-scale') == 'fixed') {
         arScale.setAttribute("ar-scale", "auto");
         $("#dynamicChange").attr("value", "UnLock Scale")
-        // do this
+        // unlock scale
     } else {
         arScale.setAttribute("ar-scale", "fixed");
         $("#dynamicChange").attr("value", "Lock Scale")
-        // do that
+        // lock scale
     }
-    // console.log(arScale)
 }
 // Zoom  disable 
 function disableCamera() {
@@ -352,32 +292,6 @@ function enableCamera() {
     $("#enableZoom").removeClass("btn-success")
 }
 
-//Defalut Fixed 
-//this way you do not need to do a javascript query every time you access the value of the checkbox
-// var arScale = document.querySelector("#sceneViewer");
-// document.getElementById("checkbox1").addEventListener("change", function () {
-//     if ($('#sceneViewer').attr('ar-scale') == 'fixed') {
-//         arScale.setAttribute("ar-scale", "auto");
-//         // $("#dynamicChange").attr("value", "UnLock Scale")
-//     } else {
-//         arScale.setAttribute("ar-scale", "fixed");
-//         // $("#dynamicChange").attr("value", "Lock Scale")
-//     }
-// });
-//transgro value change x,y,z
-function inceressValue() {
-    const modelViewerTransform = document.querySelector("model-viewer#transform");
-    const x = document.querySelector('#x');
-    const y = document.querySelector('#y');
-    const z = document.querySelector('#z');
-    var amount = 2;
-    modelViewerTransform.scale.x = modelViewerTransform.scale.x * amount;
-    modelViewerTransform.scale.y = modelViewerTransform.scale.y * amount;
-    modelViewerTransform.scale.z = modelViewerTransform.scale.y * amount;
-    console.log(modelViewerTransform.scale.x * amount)
-    console.log(modelViewerTransform.scale.y * amount)
-    console.log(modelViewerTransform.scale.z * amount)
-}
 // AR Scale LockButton
 function onChangeScaleLock() {
     var arScale = document.querySelector("#sceneViewer");
@@ -441,3 +355,4 @@ $('#show-toggle').click(function () {
  $("#ar-button").click(function (e) {
    updateOrientation();
  });
+ // Default Change orientation Change End
