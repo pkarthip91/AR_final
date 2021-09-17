@@ -405,7 +405,7 @@ $('#show-toggle').click(function () {
  // Color Change texture
  const modelViewerTexture = document.querySelector("model-viewer#imgSize");
  modelViewerTexture.addEventListener("load", (ev) => {
-   let material = modelViewerTexture.model.materials[0];
+   let material = modelViewerTexture.model.materials[1];
    let applyPBRTexture = (channel, event) => {
      material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
    }
