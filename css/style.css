@@ -23,7 +23,6 @@ body {
     
 }
 
-
  /* ModelViewer CSS */
 
 model-viewer {
@@ -89,13 +88,6 @@ model-viewer {
     left: 0;
 }
 
-
-/* This keeps child nodes hidden while the element loads */
-/* 
- :not(:defined)>* {
-    display: none;
-} */
-
 model-viewer {
     background-color: #fff;
     overflow-x: hidden;
@@ -105,10 +97,6 @@ model-viewer {
 }
 
 #ar-button {
-    /* background-image: url(../img/expand.png);
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: 12px 50%; */
     background-color: #3577ad;
     color: #ffffff;
     border-radius: 4px;
@@ -225,10 +213,6 @@ model-viewer[ar-tracking="not-tracking"]>#ar-failure {
     padding: 10px 0;
 }
 
-/* .right-rounded-btn .chat-screen.size-ios .btn.btn-white {
-    width: 50px;
-    height: px;
-} */
 
 .chat-screen.size-ios .color-section {
     border-left: 0px solid;
@@ -508,16 +492,6 @@ model-viewer[ar-tracking="not-tracking"]>#ar-failure {
     position: absolute;
 }
 
-/* .table-btn{
- 
-    text-align: center;
-    bottom: 5%;
-    position: absolute;
-    right: 0;
-    left: 0;
-
-} */
-
 .up-down{
     position: absolute;
     right: 20px;
@@ -699,16 +673,6 @@ input:checked + .slider:before {
     border-left: 1px solid;
 }
 
-/* .right-rounded-btn{
-    text-align: center;
-    bottom: 5%;
-    position: absolute;
-    right: 30px;
-     left: inherit;
-    top: 5%;
-    height: 100%;
-} */
-
 .btn-circle {
     width: 30px;
     height: 30px;
@@ -831,18 +795,6 @@ background-color: #030000;
   }
 
 
-
-  /* .right-rounded-btn {
-      display: none;
-  } */
-
-
-
-  /* #modelSrcImg{
-      visibility: hidden;
-      height: 50px;
-  } */
-
   #default-poster {
     width: 100%;
     height: 100%;
@@ -896,25 +848,6 @@ background-color: #030000;
         height: 45px;
         width: 45px;
     }
-
-  
-
-  
-    /* .animate-img{
-        position: absolute;
-        left: 0;
-        line-height: 27px;
-        margin-left: 7px;
-        font-size: 12px;
-    }
-    .animate-img .img-responsive{
-        width: 60%;
-    }
-    .animate-img span{
-        font-size: 8px;
-        margin-top: -5px;
-        display: inherit;
-    } */
   }
   
 
@@ -924,14 +857,6 @@ background-color: #030000;
     cursor: pointer;
   }
 
-  @media only screen and (max-width: 600px) {
-        /* .chat-screen.show-chat {
-            right: 70px;
-        } */
-        /* .chat-screen {
-            width: 310px;
-    } */
-  }
 
   @media only screen and (max-width: 400px) {
     .right-rounded-btn .chat-screen.size-ios .btn.btn-white {
