@@ -52,7 +52,6 @@ $(document).ready(function () {
          document.getElementById("overlayer").style.display = "none";
          }, 4000);
         // once close AR button asign this pages
-        window.location.assign("https://pkarthip91.github.io/AR_final/");
         location.reload(true);
       });
       //Toggle fullscree
