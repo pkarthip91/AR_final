@@ -192,23 +192,21 @@ var animationList =
         "pos95",
         "pos100",
     ]
-var downArrow = document.getElementById('previousAnimationn');
-var upArrow = document.getElementById('nextAnimation');
+var downArrow = document.getElementById('downAnimationn');
+var upArrow = document.getElementById('upAnimation');
 
-// Click Next Animation Item 
+// Click upArrow Animation Item 
 upArrow.addEventListener('click', function () {
-    if (next.disabled == false) {
+    if (upArrow.disabled == false) {
         displayItem(modelViewer.animationName = animationList[animationList.indexOf(animationListValues) + 1]);
-        console.log(modelViewer.animationName)
         animationListValues = animationList[animationList.indexOf(animationListValues) + 1];
         displayItem(); // Animation List Displayed
     }
 });
-// Click previous Animation Item
+// Click Down Animation Item
 downArrow.addEventListener('click', function () {
     if (downArrow.disabled == false) {
         displayItem(modelViewer.animationName = animationList[animationList.indexOf(animationListValues) - 1]);
-        console.log(modelViewer.animationName)
         animationListValues = animationList[animationList.indexOf(animationListValues) - 1];
         displayItem(); // Animation List Displayed
     }
