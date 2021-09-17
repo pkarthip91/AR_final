@@ -1,6 +1,43 @@
 // Main JS 
 
 $(document).ready(function () {
+
+     // Select active color grid
+     $(".equel-grid").click(function () {
+        // Select all list items
+        var listItems = $(".equel-grid");
+        // Remove 'active' tag for all list items
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].classList.remove("active-grid");
+        }
+        // Add 'active' tag for currently selected item
+        this.classList.add("active-grid");
+    });
+
+    // Select active color color button
+    $(".color-btn").click(function () {
+        // Select all list items
+        var listItems = $(".color-btn");
+        // Remove 'active' tag for all list items
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].classList.remove("active-color");
+        }
+        // Add 'active' tag for currently selected item
+        this.classList.add("active-color");
+    });
+
+    // Select active color size button
+    $(".size-btn").click(function () {
+        // Select all list items
+        var listItems = $(".size-btn");
+        // Remove 'active' tag for all list items
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].classList.remove("active-color");
+        }
+        // Add 'active' tag for currently selected item
+        this.classList.add("active-color");
+    });
+    
     // AR close button 
     $('#close-model').click(function () {
         $('#imgSize').hide("fast");
@@ -51,42 +88,6 @@ $(document).ready(function () {
           $("#imgSize").css("height", "42px");
           document.getElementById("imgSize").removeAttribute("src");
         }
-
-    // Select active color grid
-    $(".equel-grid").click(function () {
-        // Select all list items
-        var listItems = $(".equel-grid");
-        // Remove 'active' tag for all list items
-        for (let i = 0; i < listItems.length; i++) {
-            listItems[i].classList.remove("active-grid");
-        }
-        // Add 'active' tag for currently selected item
-        this.classList.add("active-grid");
-    });
-
-    // Select active color color button
-    $(".color-btn").click(function () {
-        // Select all list items
-        var listItems = $(".color-btn");
-        // Remove 'active' tag for all list items
-        for (let i = 0; i < listItems.length; i++) {
-            listItems[i].classList.remove("active-color");
-        }
-        // Add 'active' tag for currently selected item
-        this.classList.add("active-color");
-    });
-
-    // Select active color size button
-    $(".size-btn").click(function () {
-        // Select all list items
-        var listItems = $(".size-btn");
-        // Remove 'active' tag for all list items
-        for (let i = 0; i < listItems.length; i++) {
-            listItems[i].classList.remove("active-color");
-        }
-        // Add 'active' tag for currently selected item
-        this.classList.add("active-color");
-    });
 });
 
 /**
