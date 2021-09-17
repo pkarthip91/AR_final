@@ -1,5 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
-
 
 body {
     background-color: #f4f4f4
@@ -326,19 +324,6 @@ label {
 .card-body input[type="radio"] {
     visibility: hidden
 }
-
-/* .card-body .btn:not(:disabled):not(.disabled).active::after,
-.card-body .btn:not(:disabled):not(.disabled):active::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    top: 4px;
-    left: 4.2px;
-    background-color: #fff;
-    position: absolute;
-    transition: ease-in all .4s
-} */
 
 .card-body .btn.btn-light:not(:disabled):not(.disabled).active::after,
 .card-body .btn.btn-light:not(:disabled):not(.disabled):active::after {
