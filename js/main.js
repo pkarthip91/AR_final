@@ -105,7 +105,7 @@ $(document).on("click", function () {
 });
 
 
-// Modelview Image animation based on devices
+
 const modelViewerImage = document.querySelector("model-viewer#imgSize");
 var animationListValues = "pos45";
 var ios = false;
@@ -192,21 +192,23 @@ var animationList =
         "pos95",
         "pos100",
     ]
-var downArrow = document.getElementById('downAnimationn');
-var upArrow = document.getElementById('upAnimation');
+var downArrow = document.getElementById('previousAnimationn');
+var upArrow = document.getElementById('nextAnimation');
 
-// Click upArrow Animation Item 
+// Click Next Animation Item 
 upArrow.addEventListener('click', function () {
     if (upArrow.disabled == false) {
         displayItem(modelViewer.animationName = animationList[animationList.indexOf(animationListValues) + 1]);
+        console.log(modelViewer.animationName)
         animationListValues = animationList[animationList.indexOf(animationListValues) + 1];
         displayItem(); // Animation List Displayed
     }
 });
-// Click Down Animation Item
+// Click previous Animation Item
 downArrow.addEventListener('click', function () {
     if (downArrow.disabled == false) {
         displayItem(modelViewer.animationName = animationList[animationList.indexOf(animationListValues) - 1]);
+        console.log(modelViewer.animationName)
         animationListValues = animationList[animationList.indexOf(animationListValues) - 1];
         displayItem(); // Animation List Displayed
     }
