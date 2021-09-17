@@ -1,6 +1,58 @@
 // Main JS 
 
 $(document).ready(function () {
+    // AR close button 
+    $('#close-model').click(function () {
+        $('#imgSize').hide("fast");
+        $('.ar-visible').addClass("d-none")
+        document.getElementById("imgSize").removeAttribute("src");
+         // When click proceed button show loading
+         document.getElementsByClassName("loader-new")[0].style.display = "block";;
+         document.getElementById("overlayer").style.display = "block";
+        // Hide loading setimeout
+        setTimeout(function() { 
+         document.getElementsByClassName("loader-new")[0].style.display = "none";;  
+         document.getElementById("overlayer").style.display = "none";
+         }, 4000);
+        // once close AR button asign this pages
+        window.location.assign("https://pkarthip91.github.io/AR_Popup/");
+        location.reload(true);
+      });
+      //Toggle fullscree
+      $(".chat-bot-icon").click(function (e) {
+        $(this).children('.animate-img').toggleClass('hide');
+        $(this).children('span').toggleClass('hide');
+        $(this).children('svg').toggleClass('animate');
+        $('.chat-screen').toggleClass('show-chat');
+      });
+
+         //model show
+      $("#vectorGlb").click(function () {
+        $('#modelPopup').modal('show')
+      });
+
+       //AR Proceed button click event triggered
+      $("#ar-button").click(function (e) {
+        document.getElementById("imgSize").setAttribute("src", "./img/glb/613500_Thule_Vector_Alpine_HP_V1_Pos0.glb");
+        $("#hide-btn-main").css("display", "block");
+        $("#hide-btn-main").css("opacity", "1");
+        $("#imgSize").css("opacity", "1");
+        $(".rounded-circle-btn").css("display", "block");
+        $('.ar-visible').removeClass("d-none")
+        document.getElementById("imgSize").style.height = "42px"
+      });
+        if (window.location.pathname == "./vector.html") {
+          $("#hide-btn-main").css("display", "block");
+          $("#imgSize").css("opactiy", "0");
+          document.getElementById("imgSize").removeAttribute("src");
+          window.location.reload(true)
+        } else {
+          $("#hide-btn-main").css("display", "none");
+          $("#imgSize").css("height", "42px");
+          document.getElementById("imgSize").removeAttribute("src");
+        }
+
+    // Select active color grid
     $(".equel-grid").click(function () {
         // Select all list items
         var listItems = $(".equel-grid");
@@ -12,6 +64,7 @@ $(document).ready(function () {
         this.classList.add("active-grid");
     });
 
+    // Select active color color button
     $(".color-btn").click(function () {
         // Select all list items
         var listItems = $(".color-btn");
@@ -23,6 +76,7 @@ $(document).ready(function () {
         this.classList.add("active-color");
     });
 
+    // Select active color size button
     $(".size-btn").click(function () {
         // Select all list items
         var listItems = $(".size-btn");
@@ -34,7 +88,6 @@ $(document).ready(function () {
         this.classList.add("active-color");
     });
 });
-
 
 /**
  * Toogle section AR Inside button
@@ -49,68 +102,6 @@ $('#menu').removeClass('open');
 $(document).on("click", function () {
     $("#menu").slideUp();
 });
-
-/**
- * Determine the mobile operating system
- */
-function getMobileOperatingSystem() {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        const modelViewer = document.getElementById("imgSize");
-        modelViewer.animationName = "pos0_s100"
-        // /** IOS Devices*/
-        var indexIos = 0;
-        var images = [
-            './img/slide1.usdz',
-            './img/slide1.usdz',
-        ];
-        var previousIndex = function (indexIos, length) {
-            if (indexIos <= 0) {
-                return length - 1; // cycle backwards to the last image
-            } else {
-                return indexIos - 1;
-            }
-        }
-        var nextindexIos = function (indexIos, length) {
-            return ((indexAndroid + 1) % length)
-        };
-        $('.buttonAction').click(function () {
-            indexIos = nextindexIos(indexIos, images.length);
-            $('#imageswap').attr('ios-src', images[indexIos]);
-        });
-        /** initialize the image on load to the first one */
-        $('#imageswap').attr('ios-src', images[indexIos])
-
-        return "iOS";
-    }
-
-    return "unknown";
-}
-/** Andriod Devices*/
-var indexAndroid = 0;
-var images = [
-    './img/Thule_Box_1_1.glb',
-    './img/Thule_Box_1_2.glb',
-];
-var nextindexAndroid = function (indexAndroid, length) {
-    return ((indexAndroid + 1) % length)
-};
-$('.buttonAction').click(function () {
-    indexAndroid = nextindexAndroid(indexAndroid, images.length);
-    $('#imageswap').attr('src', images[indexAndroid]);
-});
-/** initialize the image on load to the first one */
-$('#imageswap').attr('src', images[indexAndroid])
-// Model change onclick button
-var images = [
-    './img/Thule_Box_1_1.glb',
-    './img/Thule_Box_1_2.glb',
-];
-// Next  Animation button
-function nextAnimation() {
-    // modelViewer.animationName = "Step4"
-    images.src = "./img/Thule_Box_1_2.glb";
-}
 
 
 const modelViewerImage = document.querySelector("model-viewer#imgSize");
@@ -410,4 +401,42 @@ $('#show-toggle').click(function () {
     $('.hide-mobile').slideToggle("slow");
 });
 
+ // Color Change texture
+ const modelViewerTexture = document.querySelector("model-viewer#imgSize");
+ modelViewerTexture.addEventListener("load", (ev) => {
+   let material = modelViewerTexture.model.materials[0];
+   let applyPBRTexture = (channel, event) => {
+     material.pbrMetallicRoughness[channel].texture.source.setURI(event.target.value);
+   }
+   document.querySelector('#colorChangeVariant').addEventListener('click', (event) => {
+     applyPBRTexture('baseColorTexture', event);
+   });
+ })
+ // // Default Change orientation Change 
+ const modelViewerTransform = document.querySelector("model-viewer#imgSize");
+ const roll = document.querySelector('#roll');
+ const pitch = document.querySelector('#pitch');
+ const yaw = document.querySelector('#yaw');
+ const frame = document.querySelector('#frame');
 
+ frame.addEventListener('click', function () {
+   modelViewerTransform.updateFraming();
+ });
+
+ const updateOrientation = () => {
+   modelViewerTransform.orientation = `${roll.value = "0"}deg ${pitch.value = "0"}deg ${yaw.value = "90"}deg `;
+ };
+
+ roll.addEventListener('input', () => {
+   updateOrientation();
+ });
+ pitch.addEventListener('input', () => {
+   updateOrientation();
+ });
+ yaw.addEventListener('input', () => {
+   updateOrientation();
+ });
+
+ $("#ar-button").click(function (e) {
+   updateOrientation();
+ });
